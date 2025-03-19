@@ -21,9 +21,10 @@ public class PlayerShoot : NetworkBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                NetworkBullet bulletClone = Instantiate(bulletPrefab, weaponTip.position, weaponTip.rotation);
-                bulletClone.NetworkObject.Spawn(); //ONLY SERVER CAN SPAWN OBJECTS
+                SpawnBulletRpc();
+                //ONLY SERVER CAN SPAWN OBJECTS
 
+                #region NOTES
                 //ALTERNATE OPTION:
                 //NetworkObject.InstantiateAndSpawn(bulletPrefab.gameObject, NetworkManager);
 
@@ -33,9 +34,21 @@ public class PlayerShoot : NetworkBehaviour
                 //OFFLINE OPTION:
                 //Rigidbody bulletClone = Instantiate(bulletPrefab, weaponTip.position, weaponTip.rotation);
                 //bulletClone.AddForce(weaponTip.forward * 500f);
+                #endregion
             }
         }
 
+    }
+
+    [Rpc(SendTo.Server)]
+    public void SpawnBulletRpc(RpcParams param = default)
+    {
+        //Debug.Log(param.Receive.SenderClientId);
+
+        NetworkBullet bulletClone = Instantiate(bulletPrefab, weaponTip.position, weaponTip.rotation);
+        bulletClone.NetworkObject.Spawn();
+        bulletClone.InitializeBullet();
+        bulletClone.originId = param.Receive.SenderClientId;
     }
 
 }

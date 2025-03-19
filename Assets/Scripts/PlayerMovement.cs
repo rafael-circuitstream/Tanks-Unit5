@@ -35,21 +35,23 @@ public class PlayerMovement : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if(IsOwner)
         {
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
-            tankRigidbody.velocity = (transform.forward * Time.fixedDeltaTime * movingSpeed * vertical);
-            transform.Rotate(transform.up * horizontal * Time.deltaTime * rotatingSpeed);
+            MoveTankRpc(horizontal, vertical);
         }
-
-
     }
 
-    private void FixedUpdate()
+    [Rpc(SendTo.Server)]
+    public void MoveTankRpc(float horizontal, float vertical)
     {
-        
+        //horizontal = Mathf.Clamp(horizontal, -1f, +1f);
+
+        tankRigidbody.velocity = (transform.forward * Time.fixedDeltaTime * movingSpeed * vertical);
+        tankRigidbody.rotation = Quaternion.Euler(transform.eulerAngles + transform.up * horizontal * rotatingSpeed * Time.fixedDeltaTime);
+        //transform.Rotate(transform.up * horizontal * Time.deltaTime * rotatingSpeed);
     }
+
 }

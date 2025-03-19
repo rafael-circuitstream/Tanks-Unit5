@@ -44,8 +44,9 @@ GameObject:
   - component: {fileID: 8933730644926524189}
   - component: {fileID: 5246102165282735012}
   - component: {fileID: 1220894600993493652}
-  - component: {fileID: 5633405028546881333}
-  - component: {fileID: 9202486779120155100}
+  - component: {fileID: 4633897081994066492}
+  - component: {fileID: -2869433682164944046}
+  - component: {fileID: -1332008214810580789}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -151,7 +152,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: -9086901407120280291, guid: a29c8856c7bca451b93b71a576aea642,
     type: 3}
   weaponTip: {fileID: 6455806168969400821}
---- !u!114 &5633405028546881333
+--- !u!114 &4633897081994066492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,7 +161,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2708175284520391657}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 450a1666cd697c44bad4e98d4eec6719, type: 3}
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UseUnreliableDeltas: 0
@@ -182,7 +183,7 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!114 &9202486779120155100
+--- !u!114 &-2869433682164944046
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,6 +193,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1332008214810580789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2708175284520391657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f2e383118dec94480ac5f76c9c98b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7705473852544140771
