@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
-
+using TMPro;
 public class UINetworkManager : MonoBehaviour
 {
+    public TMP_InputField nicknameInputfield;
+
     public void BtnClick_StartHost()
     {
         Debug.Log("Starting host...");

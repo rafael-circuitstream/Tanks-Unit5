@@ -36,7 +36,8 @@ public class NetworkBullet : NetworkBehaviour
                     if(originId != possibleNetworkObject.OwnerClientId)
                     {
                         possibleNetworkObject.DealDamage(originId);
-                        ShowKillFeedRpc(originId, possibleNetworkObject.OwnerClientId);
+
+                        //ShowKillFeedRpc(originId, possibleNetworkObject.OwnerClientId);
                     }
                     
                 }
