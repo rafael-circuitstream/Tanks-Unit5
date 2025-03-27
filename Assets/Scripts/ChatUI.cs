@@ -9,9 +9,9 @@ public class ChatUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI messageDisplay;
     NetworkChat chat;
 
-    public void InitializeChatUI()
+    public void InitializeChatUI(NetworkChat netChat)
     {
-        chat = FindObjectOfType<NetworkChat>();
+        chat = netChat;
         chat.OnMessageReceived += ReceiveMessageText;
     }
 
@@ -23,7 +23,7 @@ public class ChatUI : MonoBehaviour
         //SEND TO NETWORK - NEW PART
         if(!chat)
         {
-            InitializeChatUI();
+            InitializeChatUI(FindObjectOfType<NetworkChat>());
         }
         //NEW PART ^^^^^^^
 

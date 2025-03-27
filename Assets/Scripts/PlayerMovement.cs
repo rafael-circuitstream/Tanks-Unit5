@@ -5,8 +5,6 @@ using Unity.Netcode;
 
 public class PlayerMovement : NetworkBehaviour
 {
-    [SerializeField] private GameObject chatPrefab;
-
     [SerializeField] private Rigidbody tankRigidbody;
     [SerializeField] private float rotatingSpeed = 3f;
     [SerializeField] private float movingSpeed = 2f;
@@ -14,16 +12,12 @@ public class PlayerMovement : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
-        if (IsServer && IsLocalPlayer && IsOwner)
-        {
-            //Spawn the chat prefab
-            NetworkObject.InstantiateAndSpawn(chatPrefab, NetworkManager);
-        }
 
-        if(IsLocalPlayer)
-        {
-            FindObjectOfType<ChatUI>().InitializeChatUI();
-        }    
+
+        //if(IsLocalPlayer)
+        //{
+        //    FindObjectOfType<ChatUI>().InitializeChatUI();
+        //}    
 
     }
     // Start is called before the first frame update

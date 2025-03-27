@@ -8,6 +8,12 @@ public class NetworkChat : NetworkBehaviour
 {
     public Action<string> OnMessageReceived;
 
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+        FindObjectOfType<ChatUI>().InitializeChatUI(this);
+    }
+
     public void SendMessageToChat(string messageReceived)
     {
         string whoSentThis = "Client";

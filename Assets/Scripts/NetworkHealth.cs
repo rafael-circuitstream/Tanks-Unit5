@@ -7,6 +7,8 @@ public class NetworkHealth : NetworkBehaviour
     [SerializeField] private int defaultHealth;
     [SerializeField] private NetworkObject deathFx;
 
+    //Reference to slider/image/UI script
+
     public NetworkVariable<int> health = new NetworkVariable<int>(
         readPerm: NetworkVariableReadPermission.Everyone, 
         writePerm: NetworkVariableWritePermission.Server);
@@ -28,6 +30,11 @@ public class NetworkHealth : NetworkBehaviour
 
     private void OnHealthZero(int previous, int current)
     {
+        //CHANGE HELATHBAR VALUE HERE
+        //change value in the reference 
+
+        //THIS IS HAPPENING FOR EVERY CLIENT
+
         if(current <= 0) //Client is checking if current value of life is 0
         {
             //Start an UI EFFECT
@@ -44,6 +51,7 @@ public class NetworkHealth : NetworkBehaviour
         if (health.Value <= 0) //Server is checking if life is 0
         {
             //Die();
+            
             NetworkObject effect = Instantiate(
                 deathFx, 
                 transform.position + Vector3.up, 
@@ -51,6 +59,13 @@ public class NetworkHealth : NetworkBehaviour
 
             effect.Spawn();
             Destroy(effect.gameObject, 3f);
+
+            FindObjectOfType<NetworkGameManager>().RespawnPlayer(NetworkObject);
         }     
+    }
+
+    public void Revive()
+    {
+        health.Value = defaultHealth;
     }
 }
